@@ -10,7 +10,7 @@ export const vehiculosData = {
         estado: "En ruta",
         ruta: zonas.zona_1,
         hora_de_salida: "07:00 AM",
-        ubicacion: [7.756179, -72.229026],
+        ubicacion: [7.786991541119915, -72.20952981907791],
         bateria: 80,
       },
       {
@@ -19,7 +19,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_1,
         hora_de_salida: "07:30 AM",
-        ubicacion: [7.755934, -72.232288],
+        ubicacion: [7.787948231141292, -72.21530193280142],
         bateria: 92,
       },
       {
@@ -28,7 +28,7 @@ export const vehiculosData = {
         estado: "En mantenimiento",
         ruta: zonas.zona_1,
         hora_de_salida: "08:00 AM",
-        ubicacion: [7.758007, -72.229883],
+        ubicacion: [7.7923064580324, -72.20774883231563],
         bateria: 15, // Patología: Carga crítica detectada [cite: 31, 33]
       },
 
@@ -39,7 +39,7 @@ export const vehiculosData = {
         estado: "En ruta",
         ruta: zonas.zona_2,
         hora_de_salida: "07:00 AM",
-        ubicacion: [7.778, -72.224],
+        ubicacion: [7.769786694006719, -72.2184508500097],
         bateria: 70,
       },
       {
@@ -48,7 +48,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_2,
         hora_de_salida: "07:30 AM",
-        ubicacion: [7.778, -72.224],
+        ubicacion: [7.772848219984097, -72.22132617803554],
         bateria: 100,
       },
       {
@@ -57,7 +57,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_2,
         hora_de_salida: "08:00 AM",
-        ubicacion: [7.778, -72.224],
+        ubicacion: [7.7687661803869075, -72.22456628648257],
         bateria: 88,
       },
 
@@ -68,7 +68,7 @@ export const vehiculosData = {
         estado: "En ruta",
         ruta: zonas.zona_3,
         hora_de_salida: "07:00 AM",
-        ubicacion: [7.805, -72.195],
+        ubicacion: [7.805420251461427, -72.21596962250733],
         bateria: 65,
       },
       {
@@ -77,7 +77,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_3,
         hora_de_salida: "07:30 AM",
-        ubicacion: [7.805, -72.195],
+        ubicacion: [7.805581959140849, -72.21447165287495],
         bateria: 80,
       },
       {
@@ -86,7 +86,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_3,
         hora_de_salida: "08:00 AM",
-        ubicacion: [7.805, -72.195],
+        ubicacion: [7.803981017969283, -72.21238538391708],
         bateria: 95,
       },
 
@@ -97,7 +97,7 @@ export const vehiculosData = {
         estado: "En ruta",
         ruta: zonas.zona_4,
         hora_de_salida: "07:00 AM",
-        ubicacion: [7.76, -72.234],
+        ubicacion: [7.75489861555069, -72.23665782238949],
         bateria: 40,
       },
       {
@@ -106,7 +106,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_4,
         hora_de_salida: "07:30 AM",
-        ubicacion: [7.76, -72.234],
+        ubicacion: [7.758704393885468, -72.24090644141273],
         bateria: 30,
       },
       {
@@ -115,7 +115,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_4,
         hora_de_salida: "08:00 AM",
-        ubicacion: [7.76, -72.234],
+        ubicacion: [7.760426550417079, -72.23691531445151],
         bateria: 100,
       },
 
@@ -126,7 +126,7 @@ export const vehiculosData = {
         estado: "En ruta",
         ruta: zonas.zona_5,
         hora_de_salida: "07:00 AM",
-        ubicacion: [7.768, -72.231],
+        ubicacion: [7.768423532060208, -72.23189560231513],
         bateria: 55,
       },
       {
@@ -135,7 +135,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_5,
         hora_de_salida: "07:30 AM",
-        ubicacion: [7.768, -72.231],
+        ubicacion: [7.767619017551471, -72.22568857662719],
         bateria: 90,
       },
       {
@@ -144,7 +144,7 @@ export const vehiculosData = {
         estado: "En espera",
         ruta: zonas.zona_5,
         hora_de_salida: "08:00 AM",
-        ubicacion: [7.768, -72.231],
+        ubicacion: [7.771266137647581, -72.22456986850901],
         bateria: 85,
       },
     ],

@@ -88,7 +88,7 @@ function Dashboard() {
           ) : (
             <>
               {modoVista === "rutas" ? (
-                <Rutas viajes={viajes} />
+                <Rutas viajes={viajes} coordenadasUsuario={USER_COORDS} />
               ) : (
                 <Estaciones estaciones={estacionesData.estaciones} />
               )}
