@@ -5,7 +5,7 @@ function filtrarViajePorId(id: string) {
   const { viajes } = viajesData;
 
   const viaje = viajes.find(viaje => viaje.id_viaje === id);
-  return viaje || "No Existe un viaje con ese ID.";
+  return viaje || null;
 }
 
 export async function GET(
@@ -14,14 +14,25 @@ export async function GET(
 ) {
   const id = (await params).id;
 
-  const json = {
-    viaje: filtrarViajePorId(id),
-  };
+  const info = filtrarViajePorId(id);
 
-  return new Response(JSON.stringify(json, null, 2), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  if (info === null) {
+    return new Response(
+      JSON.stringify(
+        { message: "Viaje no encontrado! | error 404" },
+        null,
+        2,
+      ),
+      {
+        status: 404,
+      },
+    );
+  } else {
+    return new Response(JSON.stringify(info, null, 2), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 }

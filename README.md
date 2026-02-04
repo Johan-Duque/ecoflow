@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌿 EcoFlow - Dashboard de Movilidad Inteligente
 
-## Getting Started
+**EcoFlow** es una plataforma diseñada para optimizar la movilidad urbana en la ciudad de San Cristóbal, Táchira. El proyecto permite a los ciudadanos visualizar en tiempo real la disponibilidad de transporte eco-amigable, como buses eléctricos y scooters, además de monitorear estaciones de carga solar.
 
-First, run the development server:
+## 🚀 ¿Cómo funciona el proyecto?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+La aplicación funciona como un centro de control personal para el usuario, basándose en tres pilares fundamentales:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Ubicación y Tiempo Real//import { NextResponse } from "next/server";
+import { vehiculosData } from "@/src/data/data-vehiculos";
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+function filtrarVehiculoPorId(id: string) {
+  const { autobuses, scooters } = vehiculosData.vehiculos;
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  const vehiculo =
+    autobuses.find((autobus) => autobus.id === id) ||
+    scooters.find((scooter) => scooter.id === id);
+  return vehiculo || null;
+}
 
-## Learn More
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const id = (await params).id;
+  const info = filtrarVehiculoPorId(id);
 
-To learn more about Next.js, take a look at the following resources:
+  if (info === null) {
+    return new Response(
+      JSON.stringify({ message: "Vehículo no encontrado! | error 404" }, null, 2),
+      {
+        status: 404,
+      },
+    );
+  } else {
+    return new Response(JSON.stringify(info, null, 2), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+}
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+El sistema utiliza coordenadas predefinidas del usuario y la hora actual para calcular qué opciones de transporte están más cerca. En la parte superior (**Navigator**), siempre verás:
+- Tu ubicación actual (simulada).
+- El **Bus más cercano** con su hora de salida y nivel de batería.
+- La **Estación de carga más cercana** con los scooters disponibles en ese momento.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Modos de Visualización
+Puedes alternar entre dos vistas principales:
+- **Ver Rutas**: Muestra los viajes programados, puntos de inicio/destino, y una lista detallada de los buses asignados. También incluye scooters disponibles para tramos cortos (micromovilidad).
+- **Ver Estaciones**: Muestra las estaciones de carga de la ciudad, indicando su nivel de **energía solar** y si tienen reservas bajas.
 
-## Deploy on Vercel
+### 3. Sincronización de Datos
+El proyecto utiliza una API interna construida con Next.js que simula el flujo de datos de la ciudad. La lógica de cálculo de distancias y filtrado de vehículos se encuentra centralizada en la carpeta `core`, asegurando que el dashboard siempre muestre la información más relevante primero.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Estructura Técnica Simplificada
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Frontend**: Construido con **Next.js** y **React**, utilizando **Tailwind CSS** para un diseño moderno y responsive.
+- **Componentes**: El código está dividido en piezas pequeñas (Navigator, Rutas, Estaciones) para que sea fácil de mantener.
+- **Lógica Central (Core)**: Todas las operaciones matemáticas y de obtención de datos están separadas de la interfaz visual.
+- **Modelos**: Definiciones claras de qué es un "Bus", una "Estación" o un "Viaje" para evitar errores en el código.
+
+## 🏁 Cómo empezar
+
+1. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+2. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+3. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+---
+*Desarrollado para una San Cristóbal más inteligente y sostenible.*
