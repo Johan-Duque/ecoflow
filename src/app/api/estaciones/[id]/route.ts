@@ -1,10 +1,12 @@
-//import { NextResponse } from "next/server";
-import { estacionesData } from "@/src/data/data-estaciones";
+import { fetchDataBase } from "@/src/database/fetchDataBase";
+import { typeEstacion } from "@/src/models/interfaces";
 
-function filtrarEstacionPorId(id: string) {
-  const { estaciones } = estacionesData;
+async function filtrarEstacionPorId(id: string) {
+  const data: typeEstacion[] = await fetchDataBase("estaciones"); 
 
-  const estacion = estaciones.find((est) => est.id === id);
+  if (!data) return null;
+
+  const estacion = data.find((est) => est.id === id);
   return estacion || null;
 }
 
@@ -14,7 +16,7 @@ export async function GET(
 ) {
   const id = (await params).id;
 
-  const info = filtrarEstacionPorId(id);
+  const info = await filtrarEstacionPorId(id);
 
   if (info === null) {
     return new Response(

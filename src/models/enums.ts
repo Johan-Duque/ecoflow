@@ -23,9 +23,9 @@ export enum coordenadasEstaciones {
 }
 
 export enum endpoints {
-  estaciones = "/api/estaciones/",
-  viajes = "/api/viajes/",
-  vehiculos = "/api/vehiculos/",
+  estaciones = "/api/estaciones",
+  viajes = "/api/viajes",
+  vehiculos = "/api/vehiculos",
 }
 
 export enum datosUsuario {

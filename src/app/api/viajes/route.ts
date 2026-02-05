@@ -1,8 +1,7 @@
-//import { NextResponse } from "next/server";
-import { viajesData } from "@/src/data/data-viajes";
+import { fetchDataBase } from "@/src/database/fetchDataBase";
 
-export function GET() {
-  return new Response(JSON.stringify(viajesData, null, 2), {
+export async function GET() {
+  return new Response(JSON.stringify(await fetchDataBase("viajes"), null, 2), {
     status: 200,
     headers: {
       "Content-Type": "application/json",

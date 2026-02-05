@@ -1,13 +1,7 @@
-interface Estacion {
-  id: string;
-  nombre: string;
-  zona: string;
-  ubicacion: [number, number];
-  energia: number;
-}
+import { typeEstacion } from "../models/interfaces";
 
 interface EstacionesProps {
-  estaciones: Estacion[];
+  estaciones: typeEstacion[];
 }
 
 export function Estaciones({ estaciones }: EstacionesProps) {

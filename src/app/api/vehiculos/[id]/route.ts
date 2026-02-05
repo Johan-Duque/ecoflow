@@ -1,8 +1,16 @@
-//import { NextResponse } from "next/server";
-import { vehiculosData } from "@/src/data/data-vehiculos";
+import { fetchDataBase } from "@/src/database/fetchDataBase";
+import { typeBus, typeScooter } from "@/src/models/interfaces";
 
-function filtrarVehiculoPorId(id: string) {
-  const { autobuses, scooters } = vehiculosData.vehiculos;
+interface typeVehiculos {
+    autobuses: [typeBus],
+    scooters: [typeScooter]
+}
+
+async function filtrarVehiculoPorId(id: string) {
+
+  const data: typeVehiculos = await fetchDataBase("vehiculos");
+
+  const { autobuses, scooters } = data;
 
   const vehiculo =
     autobuses.find((autobus) => autobus.id === id) ||
@@ -15,7 +23,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const id = (await params).id;
-  const info = filtrarVehiculoPorId(id);
+  const info = await filtrarVehiculoPorId(id);
 
   if (info === null) {
     return new Response(

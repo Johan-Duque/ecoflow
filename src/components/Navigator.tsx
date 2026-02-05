@@ -1,5 +1,4 @@
-import { typeViaje } from "@/src/models/interfaces";
-import { estacionesData } from "../data/data-estaciones";
+import { typeViaje, typeEstacion } from "@/src/models/interfaces";
 import { calcularDistancia } from "../core";
 
 interface NavigatorProps {
@@ -7,6 +6,7 @@ interface NavigatorProps {
   userCoords: [number, number];
   clientTime: string;
   viajes: typeViaje[];
+  estaciones: typeEstacion[];
 }
 
 export function Navigator({
@@ -14,13 +14,14 @@ export function Navigator({
   userCoords,
   clientTime,
   viajes,
+  estaciones,
 }: NavigatorProps) {
   const busMasCercano =
     viajes.length > 0 && viajes[0].detalles.buses_asignados.length > 0
       ? viajes[0].detalles.buses_asignados[0]
       : null;
 
-  const estacionesConDistancia = estacionesData.estaciones
+  const estacionesConDistancia = estaciones
     .map((estacion) => ({
       ...estacion,
       distancia: calcularDistancia(

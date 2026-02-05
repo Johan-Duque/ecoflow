@@ -1,15 +1,15 @@
-import { typeViaje } from "../models/interfaces";
-import { estacionesData } from "../data/data-estaciones";
+import { typeViaje, typeEstacion } from "../models/interfaces";
 import { calcularDistancia } from "../core";
 
 interface RutasProps {
   viajes: typeViaje[];
   coordenadasUsuario: [number, number];
+  estaciones: typeEstacion[];
 }
 
-export function Rutas({ viajes, coordenadasUsuario }: RutasProps) {
+export function Rutas({ viajes, coordenadasUsuario, estaciones }: RutasProps) {
   function obtenerDistanciaEstacion(estacion: string) {
-    for (const est of estacionesData.estaciones) {
+    for (const est of estaciones) {
       if (est.zona === estacion) {
         const dist = calcularDistancia(
           est.ubicacion[0],
